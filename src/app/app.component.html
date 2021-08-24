@@ -1,0 +1,11 @@
+<h1>Theme Picker</h1>
+<div class="btn">
+  <button name="Get Theme" (click)="selectFromList()">Get Theme</button>
+  <h3>{{ output }}</h3>
+</div>
+<h2>Theme Options: </h2>
+<ul>
+<div *ngFor="let t of options">
+  <li>{{t}}</li>
+</div>
+</ul>
