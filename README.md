@@ -1,2 +1,2 @@
-# theme-picker
+# Theme Picker
 Angular app to select theme
