@@ -1,1 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:400,600,700,800,900');
+
 /* You can add global styles to this file, and also import other style files */
+body
+{
+    background: linear-gradient(to right, #ffa743 0%, #ffa743 50%, #abd752 50%, #abd752 100%);
+}
+
+button
+{
+    text-align:center;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    background-color:white;
+    vertical-align: middle;
+}
+
+h2
+{
+    background-color:white;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    text-align:center;
+    vertical-align: middle;
+}
+
+/*1. data service 2. new theme 3. code theme*/

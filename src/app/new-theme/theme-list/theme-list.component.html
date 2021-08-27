@@ -1,0 +1,25 @@
+<div class="title">
+    <h2>ENTER THEMES</h2>
+</div>
+<div class="enter">
+    <input #newTheme type="text" id="val" class="val">
+    <button (click)="addTheme(newTheme.value)" class="plus">✔</button>
+</div>
+<div class="list">
+    <ul>
+        <div *ngFor="let i of inputted" class="inputted">
+            <p>{{i}}</p>
+            <button (click)="removeTheme(i)" class="x">x</button>
+            <br />
+        </div>
+    </ul>
+    <div *ngFor="let o of basicOptions" class="selected">
+        <input type="checkbox" id="o" (change)="updateSelected(o, $event)">
+        <label for="o">{{o}}</label>
+        <br />
+    </div>
+</div>
+<div class="done">
+    <button class="bottom" (click)="cancel()">Cancel</button>
+    <button class="bottom" (click)="createDatabase()">Done</button>
+</div>

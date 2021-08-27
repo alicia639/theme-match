@@ -1,0 +1,66 @@
+h2
+{
+    color: #ffa743;
+    height: 70px;
+    padding-top: 10px;
+    background-color:white;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    text-align:center;
+    vertical-align: middle;    
+}
+
+button
+{
+    color: #ffa743;
+    text-align:center;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    background-color:white;
+    vertical-align: middle;
+}
+
+.title
+{
+    padding-left:50px;
+    padding-right:50px;
+    
+}
+
+.val
+{
+    height: 80px;
+    width: 500px;
+}
+
+input
+{
+    font-family:'Spartan', sans-serif;
+    font-size:40px;
+    color: #ffa743;
+}
+
+.bottom
+{
+    display: inline-block;
+    margin-left:20px;
+    margin-right:20px;
+    color: #ffa743;
+    width: 250px;
+}
+
+p
+{
+    font-family:'Spartan', sans-serif;
+    font-size:20px;
+    font-weight:400;
+    text-align:center;
+    color: white;
+}
+
+.done
+{
+    padding-top: 30px;
+}

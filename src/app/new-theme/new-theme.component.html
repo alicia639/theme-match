@@ -1,0 +1,9 @@
+<div class="page" *ngIf="page==0">
+    <button (click)="switchPage(1)">NEW</button>
+</div>
+<div class="page" *ngIf="page==1">
+    <app-theme-list (pageChange)='switchPage($event)' (codeValue)='setCode($event)'></app-theme-list>
+</div>
+<div class="page" *ngIf="page==2">
+    <app-code-show [code]="code" (pageChange)='switchPage($event)'></app-code-show>
+</div>

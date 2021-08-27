@@ -1,0 +1,47 @@
+.title
+{
+    padding-left:50px;
+    padding-right:50px;
+    
+}
+
+.code
+{
+    border-radius: 60%;
+    padding-left:150px;
+    padding-right:150px;
+}
+
+p
+{
+    font-family:'Spartan', sans-serif;
+    font-size:30px;
+    padding-right:20px;
+    color: white;
+}
+
+button
+{
+    color: #abd752;
+    text-align:center;
+    vertical-align:middle;
+    width: 400px;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    background-color:white;
+    height: 100px;
+}
+
+h2
+{
+    color: #abd752;
+    height: 80px;
+    padding-top: 20px;    
+    background-color:white;
+    font-family:'Spartan', sans-serif;
+    font-size:60px;
+    font-weight:900;
+    text-align:center;
+    vertical-align: middle;   
+}

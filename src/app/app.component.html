@@ -1,11 +1,9 @@
-<h1>Theme Picker</h1>
-<div class="btn">
-  <button name="Get Theme" (click)="selectFromList()">Get Theme</button>
-  <h3>{{ output }}</h3>
+<h1>THEME MATCH</h1>
+<div class="boxes">
+  <div class="left">
+    <app-join-party [code]="code" (doneCode)="resetCode()"></app-join-party>
+  </div>
+  <div class="right">
+    <app-new-theme (newCode)="prepJoin($event)"></app-new-theme>
+  </div>
 </div>
-<h2>Theme Options: </h2>
-<ul>
-<div *ngFor="let t of options">
-  <li>{{t}}</li>
-</div>
-</ul>

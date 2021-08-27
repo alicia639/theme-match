@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { DataService } from "./core/data.service";
 
 
 @Component({
@@ -12,38 +10,30 @@ import { DataService } from "./core/data.service";
 export class AppComponent
 {
   title:string="theme-picker";
+  private _code:string = "";
 
-  options:any[] = [];
-
-  selected:any[] = [];
-
-  output:string;
-
-  constructor(private dataService:DataService)
+  @Input('code')
+  set code(value:string)
   {
-    this.output = "";
-    this.dataService.getOptions()
-            .subscribe((ent: any[]) => this.options = ent);
-    this.dataService.getSelected()
-            .subscribe((ent: any[]) => this.selected = ent);
-    console.log(this.selected);
+    this._code = value;
   }
 
-  selectFromList()
+  get code() : string
   {
-    if (this.options.length - this.selected.length == -1)
-    {
-      this.output="no more themes";
-    }
-    else
-    {
-      let str:string = this.selected[0];
-      while (this.selected.indexOf(str)!=-1)
-      {
-        str = this.options[Math.ceil(Math.random()*this.options.length)-1];
-      }
-      this.output = str;
-      this.dataService.addToSelected(this.output);
-    }
+    return this._code;
+  }
+
+  constructor()
+  { 
+  }
+
+  prepJoin(e:string)
+  {
+    this.code = e;
+  }
+
+  resetCode() : void
+  {
+    this.code = "";
   }
 }

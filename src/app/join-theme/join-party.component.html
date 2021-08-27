@@ -1,0 +1,9 @@
+<div class="page" *ngIf="page==0">
+    <button (click)="switchPage(1)">JOIN</button>
+</div>
+<div class="page" *ngIf="page==1">
+    <app-code-page (pageNumber)="switchPage($event)" (themeVal)="setTheme($event)" [code]="code"></app-code-page>
+</div>
+<div class="page" *ngIf="page==2">
+    <app-theme-show [theme]="theme" (pageChange)="switchPage($event)"></app-theme-show>
+</div>

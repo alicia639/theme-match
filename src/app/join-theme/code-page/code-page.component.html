@@ -1,0 +1,18 @@
+<div class="title">
+    <h2>ENTER CODE</h2>
+</div>
+
+<input name="code" type="text" class="val" [(ngModel)]="code">
+
+<div class="title">
+    <h2>ENTER NAME</h2>
+</div>
+
+<input name="name" type="text" class="val" [(ngModel)]="name">
+
+<p>{{error}}</p>
+
+<div class="done">
+    <button class="bottom" (click)="cancel()">Cancel</button>
+    <button class="bottom" (click)="sendData()">Done</button>
+</div>

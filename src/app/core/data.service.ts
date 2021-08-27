@@ -1,50 +1,90 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject, AngularFireAction } from '@angular/fire/database';
+import { DatabaseSnapshot } from '@angular/fire/database';
+import { async, waitForAsync } from '@angular/core/testing';
 
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable, Subscription, Subject } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
+
+import { IThemes } from '../shared/interfaces';
+
+const letters: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                          "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService 
+{
+  party: any = {};
 
-  constructor(private db: AngularFireDatabase ) { }
-
-  getOptions() : Observable<string[]> 
+  constructor(private db: AngularFireDatabase ) 
   {
-    var items: Observable<string[]>;
-
-    items = this.db.list('options').snapshotChanges().pipe(
-      map((s:any[]) => {
-        let listOf: string[] = [];
-        s.map( (str:any) => {
-          //console.log("getting template ");
-          //console.log(t.payload.val());
-          //console.log(JSON.parse(t.payload.val()));
-          let newStr: string = str.payload.val();
-          listOf.push(newStr); 
-        });
-        return listOf;
-      }),
-      catchError(this.handleError)
-    );
-    return items;
+    this.db.object('themes/').valueChanges().subscribe(theme =>
+    {
+      if (theme)
+        this.party = theme;
+    });
   }
 
-  getSelected() : Observable<any[]> 
+  getRandomOption(code: string, name: string) :  string
   {
-    var items: Observable<any[]>;
 
-    items = this.db.list('selected').snapshotChanges();
-    items.subscribe(res=> console.log(res));
-    return items;
+    if (!this.party[code])
+    {
+      return "+-";
+    }
+
+    var people: string[] = [];
+    
+    Object.keys(this.party[code].people).forEach(prop => {
+      people.push(this.party[code].people[prop]);
+    });    
+
+    if (people.indexOf(name.toLowerCase()) != -1)
+    {
+      return "--";
+    }
+
+    if (!this.party[code].options)
+    {
+      return "++";
+    }
+
+    var keys:string[] = [];
+
+    Object.keys(this.party[code].options).forEach(prop => {
+      keys.push(prop);
+    });
+
+    var ind:string = keys[Math.ceil(Math.random()*keys.length)-1];
+
+    var str: string = this.party[code].options[ind];
+
+    this.db.list('themes/' + code + '/options').remove(""+ind);
+
+    this.db.list('themes/' + code + '/people').push(name.toLowerCase());
+
+    return str;
   }
 
-  addToSelected(val: string): void
+  createThemeList(themes: string[]) :  string
   {
-    var itemsRef = this.db.list('selected').push(val);
+    var code: string = "";
+
+    for (var i:number = 0; i < 8; i++)
+    {
+      code += letters[Math.ceil(Math.random()*letters.length)-1];
+    }
+
+    this.db.object('themes/' + code).set({
+      options: themes,
+      people:[""]
+    });
+
+    return code;
   }
 
   private handleError(error: any) 
