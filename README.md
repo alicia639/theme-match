@@ -1,4 +1,4 @@
-# Theme Picker
+# Theme Match
 
 This website can be used to create a list of themes (for example, for a dress up party) and randomly match each person to one of the themes.
 
