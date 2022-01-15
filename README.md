@@ -1,6 +1,6 @@
 # Theme Match
 
-www.theme-picker.web.app
+https://theme-picker.web.app
 
 This website can be used to create a list of themes (for example, for a dress up party) and randomly match each person to one of the themes.
 
